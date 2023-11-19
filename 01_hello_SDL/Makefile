@@ -1,19 +1,15 @@
 APP = p01_hello_SDL
 OBJ = 01_hello_SDL.c
-INC = /opt/homebrew/Cellar/sdl2/2.28.4
+INC = /usr/include/x86_64-linux-gnu/SDL2
 
-CC = clang -arch arm64
+CC = gcc
 
 #CPPFLAGS specifies the additional compilation options we're using
-CPPFLAGS += $(foreach D,$(INC),-I$(D)/include)
+CPPFLAGS += $(foreach D,$(INC),-I$(D))
 
-# CFLAGS += -g -Wall -Werror -pedantic
-CFLAGS += -target arm64-apple-darwin 
-#CFLAGS += -fsanitize=address -fno-omit-frame-pointer 
-#CFLAGS += -v
+CFLAGS += -g -Wall -Werror -pedantic
 
 #LDFLAGS specifies the libraries we're linking against
-LDFLAGS += $(foreach D,$(INC),-L$(D)/lib)
 LDFLAGS += -lSDL2
 
 #This is the target that compiles our executable
