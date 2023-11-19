@@ -1,0 +1,17 @@
+APP = p01_hello_SDL
+OBJ = 01_hello_SDL.c
+INC = /usr/include/x86_64-linux-gnu/SDL2
+
+CC = gcc
+
+#CPPFLAGS specifies the additional compilation options we're using
+CPPFLAGS += $(foreach D,$(INC),-I$(D))
+
+CFLAGS += -g -Wall -Werror -pedantic
+
+#LDFLAGS specifies the libraries we're linking against
+LDFLAGS += -lSDL2
+
+#This is the target that compiles our executable
+all : $(OBJ)
+        $(CC) $(OBJ) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $(APP)
